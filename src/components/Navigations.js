@@ -5,9 +5,25 @@ import {
   Dropdown,
   DropdownItem,
   DropdownToggle,
-  DropdownMenu,
-  NavLink
+  DropdownMenu
 } from 'reactstrap'
+import { Link } from 'react-router-dom'
+import Styled from 'styled-components'
+
+const Div = Styled.div`
+font-size:22px;
+`
+const Home = Styled(Link)`
+  display: block;
+    padding: .5rem 1rem;
+        color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    &:hover{
+       text-decoration: none;
+    }
+}
+`
 
 export default class Navigations extends React.Component {
   constructor(props) {
@@ -27,24 +43,24 @@ export default class Navigations extends React.Component {
 
   render() {
     return (
-      <div>
-        <Nav pills>
+      <Div>
+        <Nav style={{ background: 'white' }} pills>
           <NavItem>
-            <NavLink href="#" active>
-              Home
-            </NavLink>
+            <Home to="/">Home</Home>
           </NavItem>
           <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle nav caret>
               Loading
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem>Ring Loading</DropdownItem>
+              <Link to="/ringLoading">
+                <DropdownItem>Ring Loading</DropdownItem>
+              </Link>
               <DropdownItem>Loading Screen</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </Nav>
-      </div>
+      </Div>
     )
   }
 }
