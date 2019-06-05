@@ -30,14 +30,23 @@ export default class Navigations extends React.Component {
     super(props)
 
     this.toggle = this.toggle.bind(this)
+    this.toggleValid = this.toggleValid.bind(this)
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      dropdownValid: false
     }
   }
 
   toggle() {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: !this.state.dropdownOpen,
+      dropdownValid: this.state.dropdownValid
+    })
+  }
+  toggleValid() {
+    this.setState({
+      dropdownOpen: this.state.dropdownOpen,
+      dropdownValid: !this.state.dropdownValid
     })
   }
 
@@ -56,7 +65,23 @@ export default class Navigations extends React.Component {
               <Link to="/ringLoading">
                 <DropdownItem>Ring Loading</DropdownItem>
               </Link>
-              <DropdownItem>Loading Screen</DropdownItem>
+              <Link to="/rotationLoading">
+                <DropdownItem>Rotation Loading</DropdownItem>
+              </Link>
+            </DropdownMenu>
+          </Dropdown>
+          <Dropdown
+            nav
+            isOpen={this.state.dropdownValid}
+            toggle={this.toggleValid}
+          >
+            <DropdownToggle nav caret>
+              Validation
+            </DropdownToggle>
+            <DropdownMenu>
+              <Link to="/">
+                <DropdownItem>alert</DropdownItem>
+              </Link>
             </DropdownMenu>
           </Dropdown>
         </Nav>
