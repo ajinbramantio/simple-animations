@@ -79,7 +79,7 @@ export default class Navigations extends React.Component {
               Validation
             </DropdownToggle>
             <DropdownMenu>
-              <Link to="/">
+              <Link to="/switchAlert">
                 <DropdownItem>alert</DropdownItem>
               </Link>
             </DropdownMenu>
